@@ -1,0 +1,721 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Admin Login | PakPotato{% endblock %}
+
+{% block content %}
+
+<main class="admin-login-page">
+
+```
+<section class="admin-login-shell">
+
+    <!-- Brand -->
+    <div class="admin-brand">
+        <div class="admin-logo" aria-hidden="true">
+            🥔
+        </div>
+
+        <div class="admin-brand-text">
+            <strong>PakPotato</strong>
+            <span>Management Portal</span>
+        </div>
+    </div>
+
+    <!-- Login Card -->
+    <div class="admin-login-card">
+
+        <div class="admin-login-header">
+
+            <div class="admin-security-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3L19 6V11.5C19 16.2 16.1 20.1 12 21C7.9 20.1 5 16.2 5 11.5V6L12 3Z"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linejoin="round"/>
+                    <path d="M9 12L11 14L15 10"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <span class="admin-eyebrow"
+                  data-en="SECURE ADMIN AREA"
+                  data-ur="محفوظ ایڈمن ایریا">
+                SECURE ADMIN AREA
+            </span>
+
+            <h1
+                data-en="Welcome back"
+                data-ur="خوش آمدید">
+                Welcome back
+            </h1>
+
+            <p
+                data-en="Sign in to manage your PakPotato website, enquiries and orders."
+                data-ur="اپنی پاک پوٹیٹو ویب سائٹ، درخواستوں اور آرڈرز کو منظم کرنے کے لیے سائن اِن کریں۔">
+                Sign in to manage your PakPotato website, enquiries and orders.
+            </p>
+
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="admin-notices">
+                    {% for category, message in messages %}
+                        <div class="admin-notice {{ category }}" role="alert">
+                            <span class="notice-icon">
+                                {% if category == "success" %}
+                                    ✓
+                                {% else %}
+                                    !
+                                {% endif %}
+                            </span>
+
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Login Form -->
+        <form method="POST"
+              class="admin-login-form"
+              autocomplete="on">
+
+            <!-- Username -->
+            <div class="admin-field">
+
+                <label for="username"
+                       data-en="Username"
+                       data-ur="یوزرنیم">
+                    Username
+                </label>
+
+                <div class="admin-input-wrap">
+
+                    <svg class="field-icon"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         aria-hidden="true">
+                        <circle cx="12"
+                                cy="8"
+                                r="3.5"
+                                stroke="currentColor"
+                                stroke-width="1.7"/>
+                        <path d="M5 20C5.7 16.5 8.2 14.5 12 14.5C15.8 14.5 18.3 16.5 19 20"
+                              stroke="currentColor"
+                              stroke-width="1.7"
+                              stroke-linecap="round"/>
+                    </svg>
+
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        placeholder="Enter your username"
+                        data-en="Enter your username"
+                        data-ur="اپنا یوزرنیم درج کریں"
+                        autocomplete="username"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        required>
+
+                </div>
+
+            </div>
+
+            <!-- Password -->
+            <div class="admin-field">
+
+                <div class="admin-label-row">
+
+                    <label for="password"
+                           data-en="Password"
+                           data-ur="پاس ورڈ">
+                        Password
+                    </label>
+
+                </div>
+
+                <div class="admin-input-wrap">
+
+                    <svg class="field-icon"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         aria-hidden="true">
+                        <rect x="5"
+                              y="10"
+                              width="14"
+                              height="10"
+                              rx="2"
+                              stroke="currentColor"
+                              stroke-width="1.7"/>
+                        <path d="M8 10V7.5C8 5.3 9.8 3.5 12 3.5C14.2 3.5 16 5.3 16 7.5V10"
+                              stroke="currentColor"
+                              stroke-width="1.7"
+                              stroke-linecap="round"/>
+                    </svg>
+
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        data-en="Enter your password"
+                        data-ur="اپنا پاس ورڈ درج کریں"
+                        autocomplete="current-password"
+                        required>
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="togglePassword"
+                        aria-label="Show password"
+                        title="Show password">
+
+                        <svg id="eyeOpen"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             aria-hidden="true">
+                            <path d="M2.5 12C4.7 7.8 8 5.5 12 5.5C16 5.5 19.3 7.8 21.5 12C19.3 16.2 16 18.5 12 18.5C8 18.5 4.7 16.2 2.5 12Z"
+                                  stroke="currentColor"
+                                  stroke-width="1.7"/>
+                            <circle cx="12"
+                                    cy="12"
+                                    r="2.8"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"/>
+                        </svg>
+
+                        <svg id="eyeClosed"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             aria-hidden="true"
+                             style="display:none;">
+                            <path d="M3 3L21 21"
+                                  stroke="currentColor"
+                                  stroke-width="1.7"
+                                  stroke-linecap="round"/>
+                            <path d="M10.6 5.7C11.1 5.6 11.5 5.5 12 5.5C16 5.5 19.3 7.8 21.5 12C20.5 13.9 19.2 15.4 17.7 16.5"
+                                  stroke="currentColor"
+                                  stroke-width="1.7"
+                                  stroke-linecap="round"/>
+                            <path d="M6.3 7.2C4.7 8.3 3.4 9.9 2.5 12C4.7 16.2 8 18.5 12 18.5C13 18.5 14 18.3 14.9 17.9"
+                                  stroke="currentColor"
+                                  stroke-width="1.7"
+                                  stroke-linecap="round"/>
+                        </svg>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Sign In -->
+            <button type="submit"
+                    class="admin-login-button">
+
+                <span data-en="Sign In to Dashboard"
+                      data-ur="ڈیش بورڈ میں سائن اِن کریں">
+                    Sign In to Dashboard
+                </span>
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     aria-hidden="true">
+                    <path d="M5 12H19"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"/>
+                    <path d="M13 6L19 12L13 18"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+
+            </button>
+
+        </form>
+
+        <!-- Security Footer -->
+        <div class="admin-security-footer">
+
+            <span class="security-check">
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     aria-hidden="true">
+                    <path d="M12 3L19 6V11.5C19 16.2 16.1 20.1 12 21C7.9 20.1 5 16.2 5 11.5V6L12 3Z"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linejoin="round"/>
+                    <path d="M9 12L11 14L15 10"
+                          stroke="currentColor"
+                          stroke-width="1.7"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+            </span>
+
+            <span
+                data-en="Protected admin access"
+                data-ur="محفوظ ایڈمن رسائی">
+                Protected admin access
+            </span>
+
+            <span class="security-dot"></span>
+
+            <span
+                data-en="Authorized users only"
+                data-ur="صرف مجاز صارفین">
+                Authorized users only
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="admin-login-bottom">
+
+        <span>
+            © {{ current_year if current_year is defined else "2026" }}
+            PakPotato
+        </span>
+
+        <span class="bottom-separator">•</span>
+
+        <span
+            data-en="Admin Portal"
+            data-ur="ایڈمن پورٹل">
+            Admin Portal
+        </span>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+<style>
+/* =========================================================
+   PAKPOTATO — PROFESSIONAL ADMIN LOGIN
+   ========================================================= */
+
+.admin-login-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(255, 193, 7, .10), transparent 32%),
+        radial-gradient(circle at 90% 90%, rgba(34, 197, 94, .08), transparent 32%),
+        #f7f9f5;
+}
+
+.admin-login-shell {
+    width: 100%;
+    max-width: 460px;
+}
+
+/* Brand */
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.admin-logo {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    font-size: 25px;
+}
+
+.admin-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.admin-brand-text strong {
+    color: #18211b;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -.3px;
+}
+
+.admin-brand-text span {
+    margin-top: 4px;
+    color: #758078;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+/* Card */
+
+.admin-login-card {
+    background: rgba(255,255,255,.96);
+    border: 1px solid rgba(20,35,25,.08);
+    border-radius: 24px;
+    padding: 38px;
+    box-shadow:
+        0 25px 70px rgba(20,35,25,.10),
+        0 3px 10px rgba(20,35,25,.04);
+}
+
+/* Header */
+
+.admin-login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-security-icon {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    border-radius: 15px;
+    color: #3f7d45;
+    background: #edf7ee;
+}
+
+.admin-security-icon svg {
+    width: 25px;
+    height: 25px;
+}
+
+.admin-eyebrow {
+    display: inline-block;
+    color: #5d8a62;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.admin-login-header h1 {
+    margin: 8px 0 8px;
+    color: #172019;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -.8px;
+}
+
+.admin-login-header p {
+    max-width: 350px;
+    margin: 0 auto;
+    color: #78817b;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* Notices */
+
+.admin-notices {
+    margin-bottom: 20px;
+}
+
+.admin-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 13px;
+    border-radius: 11px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.admin-notice.success {
+    color: #246333;
+    background: #edf8ef;
+    border: 1px solid #d5ecd9;
+}
+
+.admin-notice.error,
+.admin-notice.danger {
+    color: #a43a32;
+    background: #fff1f0;
+    border: 1px solid #f4d6d3;
+}
+
+.notice-icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 800;
+    background: rgba(0,0,0,.05);
+}
+
+/* Form */
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-field label {
+    color: #303a33;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.admin-input-wrap {
+    position: relative;
+}
+
+.admin-input-wrap input {
+    width: 100%;
+    height: 52px;
+    padding: 0 46px;
+    border: 1px solid #dfe5df;
+    border-radius: 12px;
+    outline: none;
+    background: #fbfcfb;
+    color: #18211b;
+    font: inherit;
+    font-size: 13px;
+    transition: .2s ease;
+    box-sizing: border-box;
+}
+
+.admin-input-wrap input::placeholder {
+    color: #a1aaa3;
+}
+
+.admin-input-wrap input:hover {
+    border-color: #cbd5cd;
+}
+
+.admin-input-wrap input:focus {
+    background: #fff;
+    border-color: #76a97c;
+    box-shadow: 0 0 0 4px rgba(76,137,84,.10);
+}
+
+.field-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    width: 19px;
+    height: 19px;
+    transform: translateY(-50%);
+    color: #89938c;
+    pointer-events: none;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #7c867f;
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    background: #f0f3f0;
+    color: #3f7d45;
+}
+
+.password-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Button */
+
+.admin-login-button {
+    width: 100%;
+    min-height: 53px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 12px;
+    background: #315f37;
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(49,95,55,.20);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.admin-login-button svg {
+    width: 17px;
+    height: 17px;
+}
+
+.admin-login-button:hover {
+    background: #274f2d;
+    transform: translateY(-1px);
+    box-shadow: 0 13px 28px rgba(49,95,55,.25);
+}
+
+.admin-login-button:active {
+    transform: translateY(0);
+}
+
+/* Security Footer */
+
+.admin-security-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #edf0ed;
+    color: #89928c;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.security-check {
+    width: 18px;
+    height: 18px;
+    display: grid;
+    place-items: center;
+    color: #5c8a63;
+}
+
+.security-check svg {
+    width: 16px;
+    height: 16px;
+}
+
+.security-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #b5bcb7;
+}
+
+/* Bottom */
+
+.admin-login-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 20px;
+    color: #9aa29c;
+    font-size: 10px;
+}
+
+.bottom-separator {
+    color: #c4c9c5;
+}
+
+/* Mobile */
+
+@media (max-width: 520px) {
+
+    .admin-login-page {
+        min-height: calc(100vh - 60px);
+        padding: 35px 15px;
+    }
+
+    .admin-login-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .admin-login-header h1 {
+        font-size: 26px;
+    }
+
+    .admin-login-header p {
+        font-size: 12px;
+    }
+
+    .admin-brand {
+        margin-bottom: 18px;
+    }
+
+    .admin-input-wrap input {
+        height: 50px;
+    }
+
+    .admin-security-footer {
+        line-height: 1.5;
+    }
+}
+</style>
+
+<script>
+(function () {
+
+    const password = document.getElementById("password");
+    const toggle = document.getElementById("togglePassword");
+    const eyeOpen = document.getElementById("eyeOpen");
+    const eyeClosed = document.getElementById("eyeClosed");
+
+    if (!password || !toggle) return;
+
+    toggle.addEventListener("click", function () {
+
+        const showing = password.type === "text";
+
+        password.type = showing ? "password" : "text";
+
+        eyeOpen.style.display = showing ? "block" : "none";
+        eyeClosed.style.display = showing ? "none" : "block";
+
+        toggle.setAttribute(
+            "aria-label",
+            showing ? "Show password" : "Hide password"
+        );
+
+        toggle.setAttribute(
+            "title",
+            showing ? "Show password" : "Hide password"
+        );
+
+    });
+
+})();
+</script>
+
+{% endblock %}

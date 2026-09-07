@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PakPotato Export & Supply{% endblock %}</title>
+    <meta name="description" content="PakPotato Export & Supply - Quality Pakistani potatoes for international markets.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+
+        <a href="{{ url_for('index') }}" class="brand">
+            <span class="brand-main">PakPotato</span>
+            <span class="brand-sub">EXPORT & SUPPLY</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="{{ url_for('index') }}"
+               data-en="Home"
+               data-ur="&#x06C1;&#x0648;&#x0645;">Home</a>
+
+            <a href="{{ url_for('about') }}"
+               data-en="About"
+               data-ur="&#x06C1;&#x0645;&#x0627;&#x0631;&#x06D2; &#x0628;&#x0627;&#x0631;&#x06D2; &#x0645;&#x06CC;&#x06BA;">About</a>
+
+            <a href="{{ url_for('index') }}#potatoes"
+               data-en="Products"
+               data-ur="&#x0645;&#x0635;&#x0646;&#x0648;&#x0639;&#x0627;&#x062A;">Products</a>
+
+            <a href="{{ url_for('index') }}#quality"
+               data-en="Quality"
+               data-ur="&#x0645;&#x0639;&#x06CC;&#x0627;&#x0631;">Quality</a>
+
+            <a href="{{ url_for('contact') }}"
+               data-en="Contact"
+               data-ur="&#x0631;&#x0627;&#x0628;&#x0637;&#x06C1;">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <div class="language-switcher" aria-label="Language">
+                <button type="button"
+                        class="language-btn active"
+                        data-lang="en">EN</button>
+
+                <span class="language-divider">|</span>
+
+                <button type="button"
+                        class="language-btn"
+                        data-lang="ur">Urdu</button>
+            </div>
+
+            <a href="{{ url_for('index') }}#quote"
+               class="quote-btn"
+               data-en="Request a Quote"
+               data-ur="&#x0642;&#x06CC;&#x0645;&#x062A; &#x06A9;&#x06CC; &#x062F;&#x0631;&#x062E;&#x0648;&#x0627;&#x0633;&#x062A;">
+                Request a Quote
+            </a>
+
+        </div>
+
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-brand-block">
+            <div class="footer-brand">PakPotato</div>
+
+            <p data-en="Reliable Pakistani potato export & supply for international buyers."
+               data-ur="&#x0628;&#x06CC;&#x0646; &#x0627;&#x0644;&#x0627;&#x0642;&#x0648;&#x0627;&#x0645;&#x06CC; &#x062E;&#x0631;&#x06CC;&#x062F;&#x0627;&#x0631;&#x0648;&#x06BA; &#x06A9;&#x06D2; &#x0644;&#x06CC;&#x06D2; &#x067E;&#x0627;&#x06A9;&#x0633;&#x062A;&#x0627;&#x0646;&#x06CC; &#x0622;&#x0644;&#x0648; &#x06A9;&#x06CC; &#x0645;&#x0639;&#x06CC;&#x0627;&#x0631;&#x06CC; &#x0628;&#x0631;&#x0622;&#x0645;&#x062F; &#x0627;&#x0648;&#x0631; &#x0633;&#x067E;&#x0644;&#x0627;&#x0626;&#x06CC;&#x06D4;">
+                Reliable Pakistani potato export & supply for international buyers.
+            </p>
+        </div>
+
+        <div class="footer-links">
+
+            <div>
+                <strong data-en="Company"
+                        data-ur="&#x06A9;&#x0645;&#x067E;&#x0646;&#x06CC;">Company</strong>
+
+                <a href="{{ url_for('about') }}"
+                   data-en="About"
+                   data-ur="&#x06C1;&#x0645;&#x0627;&#x0631;&#x06D2; &#x0628;&#x0627;&#x0631;&#x06D2; &#x0645;&#x06CC;&#x06BA;">About</a>
+
+                <a href="{{ url_for('contact') }}"
+                   data-en="Contact"
+                   data-ur="&#x0631;&#x0627;&#x0628;&#x0637;&#x06C1;">Contact</a>
+            </div>
+
+            <div>
+                <strong data-en="Information"
+                        data-ur="&#x0645;&#x0639;&#x0644;&#x0648;&#x0645;&#x0627;&#x062A;">Information</strong>
+
+                <a href="{{ url_for('privacy') }}"
+                   data-en="Privacy Policy"
+                   data-ur="&#x067E;&#x0631;&#x0627;&#x0626;&#x06CC;&#x0648;&#x06CC;&#x0633;&#x06CC; &#x067E;&#x0627;&#x0644;&#x06CC;&#x0633;&#x06CC;">Privacy Policy</a>
+
+                <a href="{{ url_for('terms') }}"
+                   data-en="Terms & Conditions"
+                   data-ur="&#x0634;&#x0631;&#x0627;&#x0626;&#x0637; &#x0648; &#x0634;&#x0631;&#x0627;&#x0626;&#x0637;">Terms & Conditions</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <span data-en="© 2026 PakPotato Export & Supply. All rights reserved."
+              data-ur="&#x00A9; 2026 PakPotato Export & Supply. &#x062A;&#x0645;&#x0627;&#x0645; &#x062D;&#x0642;&#x0648;&#x0642; &#x0645;&#x062D;&#x0641;&#x0648;&#x0638; &#x06C1;&#x06CC;&#x06BA;&#x06D4;">
+            © 2026 PakPotato Export & Supply. All rights reserved.
+        </span>
+    </div>
+
+</footer>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+</html>
